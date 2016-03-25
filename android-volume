@@ -4,7 +4,7 @@ KEYCODE_VOLUME_DOWN=114
 KEYCODE_VOLUME_UP=115
 
 keypress() {
-    adb shell "
+    adb -d shell "
     dev=\$(getevent -p | grep gpio-keys -B1 | grep -o '/dev/.*')
     sendevent \$dev 1 $1 1 &&
     sendevent \$dev 0 0 0 &&

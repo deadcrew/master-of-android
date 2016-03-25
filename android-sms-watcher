@@ -4,10 +4,10 @@ SIGNATURE="handleSmsReceived"
 
 # adb logcat can't show only new messages, so we have to use a hack with
 # skipping old events
-garbage_count=$(adb logcat -v raw -d | wc -l)
+garbage_count=$(adb -d logcat -v raw -d | wc -l)
 
 skipped=0
-adb logcat -v raw | while read line; do
+adb -d logcat -v raw | while read line; do
     if [ $skipped -lt $garbage_count ]; then
         skipped=$((skipped+1))
         continue

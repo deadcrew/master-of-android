@@ -62,7 +62,7 @@ _list() {
 CMDLINE
 
     local SMS=$(
-        adb shell "$CMDLINE" \
+        adb -d shell "$CMDLINE" \
         | sed 's/{BEGIN},/{"address": "/g' \
         | sed 's/,{|},/", "body": /g' \
         | sed 's/,{END}/},/g' \
